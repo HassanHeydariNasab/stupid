@@ -19,13 +19,13 @@ const Home: NextPage = () => {
 
       <h2>smart counter</h2>
       <div>{counter.state.count}</div>
-      <button onClick={() => counter.increment()}>+</button>
-      <button onClick={() => counter.decrement()}>-</button>
+      <button onClick={() => counter.increment(1)}>+</button>
+      <button onClick={() => counter.decrement(1)}>-</button>
 
       <h2>stupid counter</h2>
       <div>{stupidCounter?.state.count}</div>
-      <button onClick={() => stupidCounter?.methods.increment()}>+</button>
-      <button onClick={() => stupidCounter?.methods.decrement()}>-</button>
+      <button onClick={() => stupidCounter?.methods.increment(1)}>+</button>
+      <button onClick={() => stupidCounter?.methods.decrement(1)}>-</button>
     </div>
   );
 };

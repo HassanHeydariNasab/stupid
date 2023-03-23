@@ -29,12 +29,12 @@ export class CounterService extends Smart<IState, IConfig> {
     // This is very useful for subscriptions()
   }
 
-  increment() {
-    this.updateState({ count: this.state.count + 1 });
+  increment(step: number) {
+    this.updateState({ count: this.state.count + step });
   }
 
-  decrement() {
-    this.updateState({ count: this.state.count - 1 });
+  decrement(step: number) {
+    this.updateState({ count: this.state.count - step });
   }
 
   isDebug = () => true;

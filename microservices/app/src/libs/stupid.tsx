@@ -6,9 +6,9 @@ import type {
   SetStateAction,
 } from "react";
 
-export interface IContextValue<T> {
-  state: T;
-  setState: Dispatch<SetStateAction<T>>;
+export interface IContextValue<S> {
+  state: S;
+  setState: Dispatch<SetStateAction<S>>;
   methods: Record<string, Function>;
 }
 

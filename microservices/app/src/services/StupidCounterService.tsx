@@ -1,5 +1,5 @@
 import { createContext, useCallback, useState } from "react";
-import { createStupidProvider, IContextValue } from "src/libs/stupid";
+import { createStupidProvider } from "src/libs/stupid";
 
 interface IState {
   loading: boolean;
@@ -8,20 +8,26 @@ interface IState {
 }
 const initialState: IState = { count: 0, loading: false, results: [] };
 
-export const StupidCounterContext = createContext<IContextValue<IState> | null>(
-  null
-);
+export const StupidCounterContext = createContext<ReturnType<
+  typeof useStupidCounter
+> | null>(null);
 
 export const useStupidCounter = () => {
   const [state, setState] = useState<IState>(initialState);
 
-  const increment = useCallback(() => {
-    setState((state) => ({ ...state, count: state.count + 1 }));
-  }, [setState]);
+  const increment = useCallback(
+    (step: number) => {
+      setState((state) => ({ ...state, count: state.count + step }));
+    },
+    [setState]
+  );
 
-  const decrement = useCallback(() => {
-    setState((state) => ({ ...state, count: state.count - 1 }));
-  }, [setState]);
+  const decrement = useCallback(
+    (step: number) => {
+      setState((state) => ({ ...state, count: state.count - step }));
+    },
+    [setState]
+  );
 
   const methods = { increment, decrement };
   return { state, setState, methods };
